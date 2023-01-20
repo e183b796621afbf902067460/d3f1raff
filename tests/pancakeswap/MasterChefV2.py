@@ -1,6 +1,6 @@
 import pytest
 
-from d3f1raff.pancakeswap.MasterChefV2 import PancakeSwapMasterChefV2Contract
+from d3f1nance.pancakeswap.MasterChefV2 import PancakeSwapMasterChefV2Contract
 from raffaelo.providers.http.provider import HTTPProvider
 
 

@@ -1,6 +1,6 @@
 import pytest
 
-from d3f1raff.convex.BaseRewardPool import ConvexBaseRewardPoolContract
+from d3f1nance.convex.BaseRewardPool import ConvexBaseRewardPoolContract
 from raffaelo.providers.http.provider import HTTPProvider
 
 

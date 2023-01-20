@@ -1,6 +1,6 @@
 import pytest
 
-from d3f1raff.pancakeswap.PancakePair import PancakePairContract
+from d3f1nance.pancakeswap.PancakePair import PancakePairContract
 from raffaelo.providers.http.provider import HTTPProvider
 
 from tests.uniswap.UniswapV2Pair import TestUniSwapV2PairContract

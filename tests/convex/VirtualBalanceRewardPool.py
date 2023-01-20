@@ -1,6 +1,6 @@
 import pytest
 
-from d3f1raff.convex.VirtualBalanceRewardPool import ConvexVirtualBalanceRewardPoolContract
+from d3f1nance.convex.VirtualBalanceRewardPool import ConvexVirtualBalanceRewardPoolContract
 from raffaelo.providers.http.provider import HTTPProvider
 
 

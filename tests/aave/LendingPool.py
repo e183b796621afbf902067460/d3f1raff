@@ -1,6 +1,6 @@
 import pytest
 
-from d3f1raff.aave.LendingPool import AaveLendingPoolV2Contract
+from d3f1nance.aave.LendingPool import AaveLendingPoolV2Contract
 from raffaelo.providers.http.provider import HTTPProvider
 
 

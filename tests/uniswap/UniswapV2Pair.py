@@ -1,6 +1,6 @@
 import pytest
 
-from d3f1raff.uniswap.UniswapV2Pair import UniSwapV2PairContract
+from d3f1nance.uniswap.UniswapV2Pair import UniSwapV2PairContract
 from raffaelo.providers.http.provider import HTTPProvider
 
 

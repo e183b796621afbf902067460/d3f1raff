@@ -1,6 +1,6 @@
 import pytest
 
-from d3f1raff.curve.Pool import CurvePoolContract
+from d3f1nance.curve.Pool import CurvePoolContract
 from raffaelo.providers.http.provider import HTTPProvider
 
 
