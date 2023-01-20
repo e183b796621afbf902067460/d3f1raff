@@ -12,7 +12,7 @@ setup(
     version="0.0.1",
     author="e183b796621afbf902067460",
     author_email="606d18446a06fe9738fd@gmail.com",
-    url="https://github.com/e183b796621afbf902067460/d3f1raff",
+    url="https://github.com/e183b796621afbf902067460/d3f1nance",
     packages=find_packages(),
     long_description=long_description,
     install_requires=required,
