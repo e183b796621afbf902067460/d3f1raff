@@ -1,3 +1,4 @@
+from typing import List
 from raffaelo.interfaces.contracts.interface import iCBC
 
 
@@ -26,7 +27,7 @@ class UniSwapV3PoolContract(iCBC):
     def observations(self, i: int) -> list:
         return self.contract.functions.observations(i).call()
 
-    def observe(self, secondsAgos: int) -> list:
+    def observe(self, secondsAgos: List[int]) -> list:
         return self.contract.functions.observe(secondsAgos).call()
 
     def positions(self, i: bytes) -> list:
