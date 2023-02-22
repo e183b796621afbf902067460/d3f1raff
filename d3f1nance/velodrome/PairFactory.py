@@ -21,7 +21,7 @@ class VelodromePairFactoryContract(iCBC):
     def getFee(self, isStable: bool) -> int:
         return self.contract.functions.getFee(isStable).call()
 
-    def getInitializable(self) -> List[str, str, bool]:
+    def getInitializable(self) -> List:
         return self.contract.functions.getInitializable().call()
 
     def getPair(self, token0: str, token1: str, isStable: bool) -> str:
