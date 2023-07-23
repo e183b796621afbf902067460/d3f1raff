@@ -1,7 +1,6 @@
 import datetime
-from typing import Optional, List
 
-from sqlalchemy.orm import Mapped, mapped_column, Relationship
+from sqlalchemy.orm import Mapped, mapped_column
 from sqlalchemy import ForeignKey
 from sqlalchemy.sql import func
 from sqlalchemy.ext.declarative import declared_attr

@@ -1,25 +1,12 @@
 import datetime
-from typing import Optional
 
-from sqlalchemy.orm import Mapped, mapped_column, Relationship, column_property
+from sqlalchemy.orm import Mapped, mapped_column
 from sqlalchemy import ForeignKey
 from sqlalchemy.sql import func
 from sqlalchemy.ext.declarative import declared_attr
 
 from app.orm.settings import base
 from app.schemas.dish.schemas import DishSchema
-
-
-def _resolve_submenu_model():
-    from app.orm.models.submenu.model import submenu
-
-    return submenu
-
-
-def _resolve_menu_model():
-    from app.orm.models.menu.model import menu
-
-    return menu
 
 
 class dish(base):

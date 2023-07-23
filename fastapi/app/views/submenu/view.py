@@ -29,7 +29,7 @@ def on_get_many(
         service: Annotated[SubmenuSqlAlchemyPgRepoService, Depends(SubmenuSqlAlchemyPgRepoService)],
         menu_id: int
 ):
-    return service.read_all_by_menu(menu_id=menu_id)
+    return service.read_all_by_menu_id(menu_id=menu_id)
 
 
 @router.get('/menus/{menu_id}/submenus/{submenu_id}', status_code=status.HTTP_200_OK)

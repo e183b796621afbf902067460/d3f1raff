@@ -1,7 +1,6 @@
 import datetime
-from typing import List, Optional
 
-from sqlalchemy.orm import Mapped, mapped_column, Relationship, column_property, relationship
+from sqlalchemy.orm import Mapped, mapped_column
 from sqlalchemy.sql import func
 from sqlalchemy.ext.declarative import declared_attr
 from sqlalchemy.ext.hybrid import hybrid_method
@@ -44,7 +43,6 @@ class menu(base):
         )
 
     def to_pydantic_schema_many(self) -> MenuWithSubmenusAndDishesSchema:
-
         return MenuWithSubmenusAndDishesSchema(
             menu_id=self.menu_id,
             title=self.title,
