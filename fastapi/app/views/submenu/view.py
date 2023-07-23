@@ -9,7 +9,7 @@ from typing import Annotated
 router = APIRouter()
 
 
-@router.post('/menus/{menu_id}/submenus', status_code=status.HTTP_201_CREATED)
+@router.post('/menus/{menu_id}/submenus', status_code=status.HTTP_200_OK)
 def on_post_one(
         request: Request,
         service: Annotated[SubmenuSqlAlchemyPgRepoService, Depends(SubmenuSqlAlchemyPgRepoService)],
@@ -19,8 +19,9 @@ def on_post_one(
     try:
         submenu_id: int = service.add_one(menu_id=menu_id, submenu_title=schema.title, submenu_attrs=schema.model_dump())
     except NoResultFound:
-        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND)
-    return submenu_id
+        ...
+    else:
+        return submenu_id
 
 
 @router.get('/menus/{menu_id}/submenus', status_code=status.HTTP_200_OK)
@@ -42,8 +43,9 @@ def on_get_one(
     try:
         submenu = service.read_one_by_id(submenu_id=submenu_id)
     except NoResultFound:
-        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND)
-    return submenu
+        ...
+    else:
+        return submenu
 
 
 @router.patch('/menus/{menu_id}/submenus/{submenu_id}', status_code=status.HTTP_200_OK)
@@ -57,8 +59,9 @@ def on_patch_one(
     try:
         submenu_id = service.update_one(submenu_id=submenu_id, submenu_attrs=schema.model_dump())
     except NoResultFound:
-        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND)
-    return submenu_id
+        ...
+    else:
+        return submenu_id
 
 
 @router.delete('/menus/{menu_id}/submenus/{submenu_id}', status_code=status.HTTP_200_OK)
@@ -69,7 +72,8 @@ def on_delete_one(
         submenu_id: int
 ):
     try:
-        submenu_id = service.remove_one(submenu_id=menu_id)
+        submenu_id = service.remove_one(submenu_id=submenu_id)
     except NoResultFound:
-        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND)
-    return submenu_id
+        ...
+    else:
+        return submenu_id

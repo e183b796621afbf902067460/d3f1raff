@@ -27,7 +27,7 @@ class menu(base):
     def _count_dishes(self) -> int:
         dishes_count = 0
         for submenu in self._submenus:
-            dishes_count += len(submenu.dishes)
+            dishes_count += submenu._count_dishes()
         return dishes_count
 
     @hybrid_method

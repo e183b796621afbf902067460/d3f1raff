@@ -9,7 +9,7 @@ from typing import Annotated
 router = APIRouter()
 
 
-@router.post('/menus', status_code=status.HTTP_201_CREATED)
+@router.post('/menus', status_code=status.HTTP_200_OK)
 def on_post_one(
         request: Request,
         service: Annotated[MenuSqlAlchemyPgRepoService, Depends(MenuSqlAlchemyPgRepoService)],
@@ -35,8 +35,9 @@ def on_get_one(
     try:
         menu = service.read_one_by_id(menu_id=menu_id)
     except NoResultFound:
-        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND)
-    return menu
+        ...
+    else:
+        return menu
 
 
 @router.patch('/menus/{menu_id}', status_code=status.HTTP_200_OK)
