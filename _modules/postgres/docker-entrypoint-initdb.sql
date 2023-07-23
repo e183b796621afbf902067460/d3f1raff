@@ -18,6 +18,7 @@ CREATE TABLE IF NOT EXISTS submenu
    CONSTRAINT fk_menu
        FOREIGN KEY(menu_id)
 	       REFERENCES menu(menu_id)
+	       ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS dish
@@ -32,5 +33,6 @@ CREATE TABLE IF NOT EXISTS dish
    CONSTRAINT fk_submenu
        FOREIGN KEY(submenu_id)
 	       REFERENCES submenu(submenu_id)
+	       ON DELETE CASCADE
 );
 
