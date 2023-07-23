@@ -21,7 +21,7 @@ services:
     volumes:
       - ./_modules/postgres/docker-entrypoint-initdb.sql:/docker-entrypoint-initdb.d/docker-entrypoint-initdb.sql
 
-  restaurant:
+  fastapi:
     command: python3 app/__main__.py
     restart: always
     ports:
