@@ -1,5 +1,5 @@
 from app.repositories.abstract import SqlAlchemyPgRepo
-from app.orm.models.dish.model import dish
+from app.orm import dish
 
 
 class DishSqlAlchemyPgRepo(SqlAlchemyPgRepo):

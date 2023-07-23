@@ -3,29 +3,33 @@ import datetime
 from pydantic import BaseModel
 
 
-class SubmenuReadSchema(BaseModel):
+class SubmenuReadByTitleSchema(BaseModel):
+
+    title: str
+
+
+class SubmenuAddSchema(SubmenuReadByTitleSchema):
+
+    description: str
+
+
+class SubmenuUpdateSchema(SubmenuAddSchema):
+    ...
+
+
+class SubmenuSchema(SubmenuUpdateSchema):
 
     submenu_id: int
-
-
-class SubmenuRemoveSchema(SubmenuReadSchema):
-    ...
-
-
-class SubmenuUpdateSchema(SubmenuReadSchema):
-    ...
-
-
-class SubmenuAddSchema(SubmenuReadSchema):
-
-    submenu_title: str
-    submenu_description: str
-
-
-class SubmenuSchema(SubmenuAddSchema):
-
     menu_id: int
-    submenu_load_on: datetime.datetime
+    load_on: datetime.datetime
+
+    class Config:
+        from_attributes = True
+
+
+class SubmenuWithDishesSchema(SubmenuSchema):
+
+    dishes_count: int
 
     class Config:
         from_attributes = True

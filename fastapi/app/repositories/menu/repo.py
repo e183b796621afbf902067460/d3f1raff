@@ -1,5 +1,5 @@
 from app.repositories.abstract import SqlAlchemyPgRepo
-from app.orm.models.menu.model import menu
+from app.orm import menu
 
 
 class MenuSqlAlchemyPgRepo(SqlAlchemyPgRepo):

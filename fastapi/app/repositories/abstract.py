@@ -66,21 +66,21 @@ class SqlAlchemyPgRepo(iRepo):
             sql = select(self.model).where(self.model_id == model_id)
             orm_model = session.execute(sql).one()
 
-            return orm_model[0].to_pydantic_schema()
+            return orm_model[0].to_pydantic_schema_one()
 
     def select_one_by_title(self, model_title: str):
         with self._session as session:
             sql = select(self.model).where(self.model_title == model_title)
             orm_model = session.execute(sql).one()
 
-            return orm_model[0].to_pydantic_schema()
+            return orm_model[0].to_pydantic_schema_one()
 
     def select_all(self):
         with self._session as session:
             sql = select(self.model)
             orm_models = session.execute(sql).all()
 
-            return [orm_model[0].to_pydantic_schema() for orm_model in orm_models]
+            return [orm_model[0].to_pydantic_schema_many() for orm_model in orm_models]
 
     def update_one(self, model_id: int, attrs: dict) -> int:
         with self._session as session:

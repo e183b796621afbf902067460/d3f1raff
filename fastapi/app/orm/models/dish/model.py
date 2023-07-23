@@ -1,12 +1,25 @@
 import datetime
+from typing import Optional
 
-from sqlalchemy.orm import Mapped, mapped_column
+from sqlalchemy.orm import Mapped, mapped_column, Relationship, column_property
 from sqlalchemy import ForeignKey
 from sqlalchemy.sql import func
 from sqlalchemy.ext.declarative import declared_attr
 
 from app.orm.settings import base
 from app.schemas.dish.schemas import DishSchema
+
+
+def _resolve_submenu_model():
+    from app.orm.models.submenu.model import submenu
+
+    return submenu
+
+
+def _resolve_menu_model():
+    from app.orm.models.menu.model import menu
+
+    return menu
 
 
 class dish(base):
@@ -16,12 +29,14 @@ class dish(base):
         return cls.__name__
 
     dish_id: Mapped[int] = mapped_column(primary_key=True)
-    submenu_id: Mapped[int] = mapped_column(ForeignKey('submenu.submenu_id'))
+    submenu_id: Mapped[int] = mapped_column(ForeignKey('submenu.submenu_id', ondelete='CASCADE'))
 
     title: Mapped[str] = mapped_column(nullable=False)
     description: Mapped[str] = mapped_column(nullable=False)
     price: Mapped[float] = mapped_column(nullable=False)
     load_on: Mapped[datetime.datetime] = mapped_column(default=func.now(), nullable=False)
+
+    _submenu = None
 
     def to_pydantic_schema(self) -> DishSchema:
         return DishSchema(

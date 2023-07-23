@@ -2,7 +2,7 @@ from fastapi import Depends
 from sqlalchemy.orm.exc import NoResultFound
 
 from app.repositories.menu.repo import MenuSqlAlchemyPgRepo
-from app.schemas.menu.schemas import MenuSchema
+from app.schemas.menu.schemas import MenuSchema, MenuWithSubmenusAndDishesSchema
 
 
 from typing import List, Annotated
@@ -25,7 +25,7 @@ class MenuSqlAlchemyPgRepoService:
     def read_one_by_title(self, menu_title: str) -> MenuSchema:
         return self._repo.select_one_by_title(model_title=menu_title)
 
-    def read_all(self) -> List[MenuSchema]:
+    def read_all(self) -> List[MenuWithSubmenusAndDishesSchema]:
         return self._repo.select_all()
 
     def update_one(self, menu_id: int, menu_attrs: dict) -> int:

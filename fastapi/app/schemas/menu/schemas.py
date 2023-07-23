@@ -24,3 +24,12 @@ class MenuSchema(MenuUpdateSchema):
 
     class Config:
         from_attributes = True
+
+
+class MenuWithSubmenusAndDishesSchema(MenuSchema):
+
+    submenus_count: int
+    dishes_count: int
+
+    class Config:
+        from_attributes = True
