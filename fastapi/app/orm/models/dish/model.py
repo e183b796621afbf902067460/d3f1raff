@@ -25,7 +25,7 @@ class dish(base):
 
     _submenu = None
 
-    def to_pydantic_schema(self) -> DishSchema:
+    def to_pydantic_schema_one(self) -> DishSchema:
         return DishSchema(
             dish_id=self.dish_id,
             submenu_id=self.submenu_id,
@@ -34,3 +34,6 @@ class dish(base):
             price=self.price,
             load_on=self.load_on
         )
+
+    def to_pydantic_schema_many(self) -> DishSchema:
+        return self.to_pydantic_schema_one()

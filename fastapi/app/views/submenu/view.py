@@ -2,7 +2,7 @@ from app.services.submenu.service import SubmenuSqlAlchemyPgRepoService
 from app.schemas.submenu.schemas import SubmenuAddSchema, SubmenuUpdateSchema
 
 from fastapi import APIRouter, Depends, Request, status, HTTPException
-from sqlalchemy.exc import NoResultFound
+from sqlalchemy.exc import NoResultFound, IntegrityError
 from typing import Annotated
 
 
@@ -20,6 +20,8 @@ def on_post_one(
         submenu_id: int = service.add_one(menu_id=menu_id, submenu_title=schema.title, submenu_attrs=schema.model_dump())
     except NoResultFound:
         ...
+    except IntegrityError:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=f'No such menu_id {menu_id}.')
     else:
         return submenu_id
 
@@ -44,6 +46,8 @@ def on_get_one(
         submenu = service.read_one_by_id(submenu_id=submenu_id)
     except NoResultFound:
         ...
+    except IntegrityError:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=f'No such menu_id {menu_id}.')
     else:
         return submenu
 
@@ -60,6 +64,8 @@ def on_patch_one(
         submenu_id = service.update_one(submenu_id=submenu_id, submenu_attrs=schema.model_dump())
     except NoResultFound:
         ...
+    except IntegrityError:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=f'No such menu_id {menu_id}.')
     else:
         return submenu_id
 
@@ -75,5 +81,7 @@ def on_delete_one(
         submenu_id = service.remove_one(submenu_id=submenu_id)
     except NoResultFound:
         ...
+    except IntegrityError:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=f'No such menu_id {menu_id}')
     else:
         return submenu_id
