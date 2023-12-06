@@ -19,7 +19,7 @@ pip3 install poetry  # 1.7.1
 
 - Change directory where `pyprject.toml` is located:
 ```bash
-cd streaming-service-etherscan.io-0x88e6a0c2ddd26feeb64f039a2c41296fcb3f5640
+cd streaming-service-etherscan.io-0x88e6a0c2ddd26feeb64f039a2c41296fcb3f5640/
 ```
 
 - And install project's dependencies:
