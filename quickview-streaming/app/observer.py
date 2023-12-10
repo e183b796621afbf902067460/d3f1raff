@@ -40,8 +40,7 @@ async def observer() -> None:
     - The INFINITY constant is used to create an infinite loop for continuously observing
       transactions.
     """
-    # TODO Implement using particular service from app.services
-    service: iService = ...  # QuickSwapV3WSSService(address=settings.ADDRESS, is_reverse=...)
+    service: iService = QuickSwapV3WSSService(address=settings.ADDRESS, is_reverse=False)
 
     kafka = AIOKafkaProducerConnection()
     await kafka.start()
