@@ -7,8 +7,8 @@ from app.schemas.transactions.schema import TransactionsBatch
 from app.settings import settings
 from app.streaming import fastkafka_app
 from app.utils import INFINITY
+from app.services.quickswap_v3.service import QuickSwapV3WSSService
 
-# TODO import particular service
 try:
     from app.services.abstract import iService  # noqa: F401
 
@@ -42,8 +42,7 @@ async def observer() -> None:
     - The INFINITY constant is used to create an infinite loop for continuously observing
       transactions.
     """
-    # TODO implement using particular service
-    service: iService = ...
+    service: QuickSwapV3WSSService = QuickSwapV3WSSService(address=settings.ADDRESS, is_reverse=False)
 
     kafka = AIOKafkaProducerConnection()
     await kafka.start()
