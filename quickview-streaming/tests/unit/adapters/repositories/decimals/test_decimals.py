@@ -26,5 +26,5 @@ def test__wss_repository__token0_decimals__must_be_equal_to_18(wss_repository: Q
 
 
 @pytest.mark.repositories
-def test__wss_repository__token1_decimals__must_be_equal_to_(wss_repository: QuickSwapV3WSSRepository):  # noqa: D103
+def test__wss_repository__token1_decimals__must_be_equal_to_6(wss_repository: QuickSwapV3WSSRepository):  # noqa: D103
     assert wss_repository._token1_decimals == 6
