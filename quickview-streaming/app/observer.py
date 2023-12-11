@@ -4,13 +4,15 @@ import sys
 from app.adapters.clients.logger.handler import log
 from app.adapters.connections.kafka.producer import AIOKafkaProducerConnection
 from app.schemas.transactions.schema import TransactionsBatch
-from app.services.abstract import iService
 from app.settings import settings
-from app.streaming import FastKafkaApp
+from app.streaming import fastkafka_app
 from app.utils import INFINITY
 
+# TODO import particular service
 try:
-    from app.services.quickswap_v3.service import QuickSwapV3WSSService  # noqa: F401
+    from app.services.abstract import iService  # noqa: F401
+
+    raise ImportError
 except ImportError:
     ...
 
@@ -40,7 +42,8 @@ async def observer() -> None:
     - The INFINITY constant is used to create an infinite loop for continuously observing
       transactions.
     """
-    service: iService = QuickSwapV3WSSService(address=settings.ADDRESS, is_reverse=False)
+    # TODO implement using particular service
+    service: iService = ...
 
     kafka = AIOKafkaProducerConnection()
     await kafka.start()
@@ -48,7 +51,7 @@ async def observer() -> None:
     for _ in INFINITY:
         await asyncio.gather(
             *(
-                FastKafkaApp.to_clickhouse(producer=kafka, events=TransactionsBatch.from_iterable(events))
+                fastkafka_app.to_clickhouse(producer=kafka, events=TransactionsBatch.from_iterable(events))
                 for events in service.observe(blockchain=settings.BLOCKCHAIN)
             ),
         )
