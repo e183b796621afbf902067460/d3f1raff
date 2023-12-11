@@ -4,10 +4,10 @@ import sys
 from app.adapters.clients.logger.handler import log
 from app.adapters.connections.kafka.producer import AIOKafkaProducerConnection
 from app.schemas.transactions.schema import TransactionsBatch
+from app.services.quickswap_v3.service import QuickSwapV3WSSService
 from app.settings import settings
 from app.streaming import fastkafka_app
 from app.utils import INFINITY
-from app.services.quickswap_v3.service import QuickSwapV3WSSService
 
 try:
     from app.services.abstract import iService  # noqa: F401
