@@ -1,5 +1,6 @@
 # quickview-streaming
 
+[![codecov](https://codecov.io/gh/e183b796621afbf902067460/quickview-streaming/graph/badge.svg?token=DA1XJIAVOQ)](https://codecov.io/gh/e183b796621afbf902067460/quickview-streaming)
 [![license](https://img.shields.io/:license-Apache%202-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0.txt)
 [![code-style](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
