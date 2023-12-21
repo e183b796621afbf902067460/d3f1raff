@@ -1,0 +1,38 @@
+name: CI-pipeline to pre-commit quickview-streaming
+
+on:
+
+  pull_request:
+    types: [opened, reopened, synchronize, edited]
+    branches:
+      - master
+      - dev
+
+jobs:
+
+  pre-commit:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.x
+
+      - name: Install poetry
+        run: pip3 install poetry
+
+      - name: Change directory down
+        run: cd quickview-streaming/
+
+      - name: Install dependencies
+        run: poetry config virtualenvs.create false && poetry install --no-root --no-interaction --no-ansi
+
+      - name: Change directory up
+        run: cd ..
+
+      - name: Pre-commit run
+        run: pre-commit run --all-files

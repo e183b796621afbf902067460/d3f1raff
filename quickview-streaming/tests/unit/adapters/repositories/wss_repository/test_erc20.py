@@ -11,11 +11,11 @@ except ImportError:
     ...
 
 
-@pytest.mark.repositories
+@pytest.mark.unit
 def test__wss_repository__token0__must_be_erc20(wss_repository: QuickSwapV3WSSRepository):  # noqa: D103
     assert isinstance(wss_repository._token0, ERC20TokenContract)
 
 
-@pytest.mark.repositories
+@pytest.mark.unit
 def test__wss_repository__token1__must_be_erc20(wss_repository: QuickSwapV3WSSRepository):  # noqa: D103
     assert isinstance(wss_repository._token1, ERC20TokenContract)
