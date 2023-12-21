@@ -1,0 +1,40 @@
+name: CI-pipeline to coverage quickview-streaming
+
+on:
+
+  push:
+    branches:
+      - master
+      - dev
+
+env:
+  WSS_NODE_PROVIDER: ${{ secrets.WSS_NODE_PROVIDER }}
+
+jobs:
+
+  codecov:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.x
+
+      - name: Install poetry
+        run: pip3 install poetry
+
+      - name: Install dependencies
+        run: poetry config virtualenvs.create false && poetry install --no-root --no-interaction --no-ansi
+
+      - name: Install raffaelo-quickswap-v3
+        run: pip3 install -e "git+https://github.com/e183b796621afbf902067460/raffaelo.git#egg=raffaelo_quickswap_v3&subdirectory=_modules/raffaelo-quickswap-v3/" --config-settings editable_mode=strict
+
+      - name: Pytest run with coverage
+        run: coverage run -m pytest tests/
+
+      - name: Upload coverage report to codecov
+        uses: codecov/codecov-action@v2
