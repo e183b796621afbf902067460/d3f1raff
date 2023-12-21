@@ -10,7 +10,6 @@ async def _():
     await observer()
 
 
-# application startup
 fastapi_app = FastAPI(lifespan=fastkafka_app.fastapi_lifespan(kafka_broker_name=settings.KAFKA_BROKER_URL))
 
 
