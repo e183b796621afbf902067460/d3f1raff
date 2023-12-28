@@ -81,7 +81,7 @@ services:
       context: ./
       dockerfile: Dockerfile
     environment:
-      WSS_NODE_PROVIDER: wss://polygon-mainnet.g.alchemy.com/v2/drfaRvfwnYV1B09OP5OqDFArrsQDxrOT
+      WSS_NODE_PROVIDER:
 
       BOOTSTRAP_SERVERS: kafka:9092
       KAFKA_BROKER_URL: kafka
