@@ -1,12 +1,13 @@
 from fastapi import FastAPI
 
 from app.containers.application import ApplicationContainer
+from app.views.quickswap_v3.view import lifespan
+
 
 container = ApplicationContainer()
 container.wire(modules=[__name__])
 
-# TODO import particular lifespan function
-app = FastAPI(lifespan=...)
+app = FastAPI(lifespan=lifespan)
 app.container = container
 
 
