@@ -1,4 +1,4 @@
-name: CI-pipeline to coverage quickview-streaming
+name: CI-pipeline to coverage application
 
 on:
 
@@ -6,9 +6,6 @@ on:
     branches:
       - master
       - dev
-
-env:
-  WSS_NODE_PROVIDER: ${{ secrets.WSS_NODE_PROVIDER }}
 
 jobs:
 

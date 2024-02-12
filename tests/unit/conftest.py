@@ -1,9 +1,8 @@
 import pytest
 
-from app.adapters.repositories.quickswap_v3.repository import QuickSwapV3WSSRepository
-from app.services.quickswap_v3.service import QuickSwapV3WSSService
 from app.settings import settings
 
+# TODO import particular service and repository
 try:
     from app.adapters.repositories.abstract import iRepository  # noqa: F401
     from app.services.abstract import iService  # noqa: F401
@@ -13,11 +12,13 @@ except ImportError:
     ...
 
 
+# TODO implement particular websocket service initialization and type hints
 @pytest.fixture(scope="package")
-def wss_service() -> QuickSwapV3WSSService:  # noqa: D103
-    return QuickSwapV3WSSService(address=settings.ADDRESS, is_reverse=False)
+def wss_service() -> iService:  # noqa: D103
+    return iService(address=settings.ADDRESS, is_reverse=False)
 
 
+# TODO implement particular websocket service and repository type hints
 @pytest.fixture(scope="package")
-def wss_repository(wss_service: QuickSwapV3WSSService) -> QuickSwapV3WSSRepository:  # noqa: D103
+def wss_repository(wss_service: iService) -> iRepository:  # noqa: D103
     return wss_service._repository

@@ -1,4 +1,4 @@
-name: CI-pipeline to pre-commit quickview-streaming
+name: CI-pipeline to pre-commit application
 
 on:
 
