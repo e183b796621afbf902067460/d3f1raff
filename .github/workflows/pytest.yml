@@ -1,4 +1,4 @@
-name: CI-pipeline to test quickview-streaming
+name: CI-pipeline to test application
 
 on:
 

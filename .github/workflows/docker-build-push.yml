@@ -1,4 +1,4 @@
-name: CI-pipeline to build and push quickview-streaming image
+name: CI-pipeline to build and push application's image
 
 on:
   push:
@@ -29,11 +29,11 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/quickview-streaming
+          tags: ${{ github.repository }}
 
       - name: DockerHub Description
         uses: peter-evans/dockerhub-description@v3
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-          repository: ${{ secrets.DOCKERHUB_USERNAME }}/quickview-streaming
+          repository: ${{ github.repository }}

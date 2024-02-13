@@ -1,10 +1,23 @@
 # quickview-streaming
 
-[![codecov](https://codecov.io/gh/e183b796621afbf902067460/quickview-streaming/graph/badge.svg?token=DA1XJIAVOQ)](https://codecov.io/gh/e183b796621afbf902067460/quickview-streaming)
 [![license](https://img.shields.io/:license-Apache%202-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0.txt)
 [![code-style](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
 A cookiecutter-based project to stream data from [liquidity pool](https://polygonscan.com/address/0xAE81FAc689A1b4b1e06e7ef4a2ab4CD8aC0A087D).
+
+# Configuration
+
+- Clone current repository:
+```bash
+git clone https://github.com/e183b796621afbf902067460/quickview-streaming.git
+```
+
+- Get into the project folder:
+```bash
+cd quickview-streaming/
+```
+
+- Set `WSS_NODE_PROVIDER` environment variable in [docker-compose.yaml](https://github.com/e183b796621afbf902067460/quickview-streaming/blob/master/docker-compose.yaml).
 
 # Quickstart
 
@@ -20,11 +33,6 @@ Moving to poetry has helped to have `pyproject.toml` as a single configuration f
 - Install `poetry`:
 ```bash
 pip3 install poetry  # 1.7.1
-```
-
-- Change directory where `pyprject.toml` is located:
-```bash
-cd quickview-streaming/
 ```
 
 - And install project's dependencies:
@@ -65,8 +73,6 @@ pre-commit run --all-files
 ### Kafka environment variables
 
 - `BOOTSTRAP_SERVERS`: Kafka application bootstrap servers.
-- `KAFKA_BROKER_URL`: Kafka application broker URL.
-- `KAFKA_BROKER_PORT`: Kafka application broker port.
 - `TOPIC_NAME`: Kafka application topic name.
 
 ### Node environment variables
@@ -84,7 +90,7 @@ docker-compose up -d --build --force-recreate
 
 - Stop all services:
 ```bash
-docker-compose down
+docker-compose down -v
 ```
 
 <p><small>Based on <a target="_blank" href="https://github.com/e183b796621afbf902067460/quickview-template">quickview-template</a>.</small></p>
