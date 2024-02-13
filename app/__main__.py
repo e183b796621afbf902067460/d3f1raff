@@ -3,7 +3,6 @@ from fastapi import FastAPI
 from app.containers.application import ApplicationContainer
 from app.views.quickswap_v3.view import lifespan
 
-
 container = ApplicationContainer()
 container.wire(modules=[__name__])
 
