@@ -16,7 +16,7 @@ class ApplicationContainer(containers.DeclarativeContainer):
         kafka_container (providers.Container): Container provider for
             AIOKafkaContainer instance, managing connections to Apache Kafka.
         quickswap_v3_container (providers.Container): Container provider for
-            QuickSwapV3ServiceContainer instance, managing services related
+            QuickSwapV3Container instance, managing services related
             to QuickSwap V3.
     """
 
