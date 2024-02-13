@@ -18,7 +18,6 @@ httpx = "~=0.24.1"
 loguru = "^0.7.2"
 web3 = "^6.11.4"
 coverage = "^7.3.4"
-dependency-injector = "^4.41.0"
 aiokafka = "^0.10.0"
 
 [tool.poetry.group.linters.dependencies]
