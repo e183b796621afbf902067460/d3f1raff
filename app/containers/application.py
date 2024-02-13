@@ -1,7 +1,7 @@
 from dependency_injector import containers, providers
 
 from app.containers.kafka.container import AIOKafkaContainer
-from app.containers.quickswap_v3.container import QuickSwapV3ServiceContainer
+from app.containers.quickswap_v3.container import QuickSwapV3Container
 
 
 class ApplicationContainer(containers.DeclarativeContainer):
@@ -25,5 +25,5 @@ class ApplicationContainer(containers.DeclarativeContainer):
     )
 
     quickswap_v3_container = providers.Container(
-        QuickSwapV3ServiceContainer,
+        QuickSwapV3Container,
     )
