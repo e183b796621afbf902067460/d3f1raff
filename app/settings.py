@@ -1,5 +1,5 @@
 import os
-from typing import List, Optional
+from typing import Optional
 
 from dotenv import load_dotenv
 from pydantic_settings import BaseSettings
@@ -34,7 +34,7 @@ class _Settings(BaseSettings):
     ADDRESS: str = "0xAE81FAc689A1b4b1e06e7ef4a2ab4CD8aC0A087D"
     IS_REVERSE: bool = True if "False".lower() in ["true", "t", "yes", "y", 1] else False
 
-    BOOTSTRAP_SERVERS: List[str] = os.getenv("BOOTSTRAP_SERVERS", None).split(sep=",")
+    BOOTSTRAP_SERVERS: Optional[str] = os.getenv("BOOTSTRAP_SERVERS", None)
     TOPIC_NAME: Optional[str] = os.getenv("TOPIC_NAME", None)
 
     WSS_NODE_PROVIDER: Optional[str] = os.getenv("WSS_NODE_PROVIDER", None)
