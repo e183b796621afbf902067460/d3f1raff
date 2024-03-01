@@ -1,4 +1,4 @@
-name: Release-drafter for quickview-streaming project
+name: Release-drafter for application
 
 on:
   push:
